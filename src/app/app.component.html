@@ -3,18 +3,76 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+    <div class="container">
+       <form class="form-horizontal" #userform="ngForm" (ngSubmit)="submitForm(userform)" novalidate class="myform">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="username">Name : </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" name="username" id="username" ngModel #username="ngModel" minlength="5" maxlength="10" required pattern="^[a-zA-Z]+$" placeholder="Enter your name.."> 
+            <p *ngIf="username.errors?.required && username.touched" class="help-block"> User name is required field</p>
+            <p *ngIf="username.errors?.pattern && username.touched" class="help-block"> Enter valid user name</p>
+             <p *ngIf="username.errors?.minlength && username.touched" class="help-block"> Enter atleast 5 characters</p>
+            
+        </div>
+    
+      </div>
+      
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email : </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="email" id="email" name="email" ngModel #email="ngModel" required email placeholder="Enter email.">
+            <p *ngIf="email.errors?.required && email.touched" class="help-block"> Email is required field</p>
+            <p *ngIf="email.errors?.email && email.touched" class="help-block"> Enter valid email </p>
+        </div>
+          
+      </div>
+      
+           <div ngModelGroup="address">
+             <div class="form-group">
+        <label class="control-label col-sm-2" for="city">City : </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="city" name="city" ngModel #city="ngModel" required  placeholder="Enter city.">
+            <p *ngIf="city.errors?.required && email.touched" class="help-block"> City is required field</p>
+            
+        </div>
+          
+      </div>
+               
+               <div class="form-group">
+        <label class="control-label col-sm-2" for="zip">Zip : </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="zip" name="zip" ngModel #zip="ngModel" required pattern="[1-9][0-9]{4}$" placeholder="Enter zip.">
+            <p *ngIf="zip.errors?.required && zip.touched" class="help-block"> Zip is required field</p>
+             <p *ngIf="zip.errors?.pattern && zip.touched" class="help-block"> Enter valid zip</p>
+            
+        </div>
+          
+      </div>
+               
+               
+           </div>
+        
+          
+           
+      <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button type="submit" class="btn btn-success" [disabled]="!userform.valid">Submit</button>
+             </div>
+     </div>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button type="submit" class="btn btn-danger" (click)="resetForm()" >Reset</button>
+             </div>
+     </div>
+           
+        
+            
+      
+      
+           
+           
+          
+    </form>
 
+    </div>
+ 

@@ -1,0 +1,16 @@
+.myform input.ng-invalid.ng-touched{
+     border: 2px solid red;
+}
+.myform input.ng-valid.ng-touched{
+     border: 2px solid green;
+}
+.container{
+    margin:auto;
+    width:40%;
+}
+.form-control, .control-label{
+    margin-bottom: 15px !important;
+}
+.help-block{
+    text-align: left;
+}

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'formsApp';
+@ViewChild('userform') userform;
+
+  title = "Template Driven Forms";
+  genders =["male", "female"];
+  submitForm =(form: NgForm)=>{
+     console.log(form.value);
+  }
+  resetForm = ()=>{
+     this.userform.reset();
+  }
 }
